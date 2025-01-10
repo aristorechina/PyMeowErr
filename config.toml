@@ -1,0 +1,230 @@
+# config.toml
+
+# Python 解释器路径，默认为 "python3"，或者指定完整的路径，如 "C:\\Python39\\python.exe"
+python_path = "python3"
+
+# 是否启用实时输出
+enable_realtime_output = true
+
+# 替换规则列表
+[[replacements]]
+pattern = "^Traceback \\(most recent call last\\):"
+replacement = "主人的代码出错了喵～"
+
+[[replacements]]
+pattern = "^\\s*File \"(?P<filename>.+)\", line (?P<line>\\d+), in (?P<func>[^\\r\\n]+)"
+replacement = "在文件 \"${filename}\" 中第 ${line} 行的函数 ${func} 中喵～"
+
+[[replacements]]
+pattern = "^\\s*File \"(?P<filename>.+)\", line (?P<line>\\d+)"
+replacement = "在文件 \"${filename}\" 中的第 ${line} 行喵～"
+
+[[replacements]]
+pattern = "^During handling of the above exception, another exception occurred:"
+replacement = "在尝试处理一个异常的过程中触发了另一个新的异常喵～："
+
+[[replacements]]
+pattern = "^The above exception was the direct cause of the following exception:"
+replacement = "上面的异常是以下异常的直接原因喵～"
+
+# StopIteration
+[[replacements]]
+pattern = "^StopIteration"
+replacement = "(StopIteration) 主人没有更多数据了喵～"
+
+# EOFError
+[[replacements]]
+pattern = "^EOFError: EOF when reading a line"
+replacement = "(EOFError) 主人没有输入任何内容喵～"
+
+# OverflowError
+[[replacements]]
+pattern = "^OverflowError: \\(\\d+, 'Result too large'\\)"
+replacement = "(OverflowError) 计算结果超出可表示的范围了喵～"
+
+# UnboundLocalError
+[[replacements]]
+pattern = "^UnboundLocalError: cannot access local variable '(?P<name>.+)' where it is not associated with a value"
+replacement = "(UnboundLocalError) 主人不能访问还没被赋值的局部变量 \"${name}\" 喵～"
+
+# SyntaxError
+[[replacements]]
+pattern = "^SyntaxError: invalid syntax\\. Perhaps you forgot a comma\\?"
+replacement = "(SyntaxError) 主人的代码有语法错误喵～（也许主人忘记加逗号了喵？～）"
+
+[[replacements]]
+pattern = "^SyntaxError: invalid syntax"
+replacement = "(SyntaxError) 主人的代码有语法错误喵～"
+
+[[replacements]]
+pattern = "^SyntaxError: expected ':'"
+replacement = "(SyntaxError) 这里少了冒号喵～"
+
+[[replacements]]
+pattern = "^SyntaxError: Did you mean to use 'from \\.{2,3} import \\.{2,3}' instead\\?"
+replacement = "(SyntaxError) 主人忘记使用'from ... import ...'语法了喵～"
+
+[[replacements]]
+pattern = "^SyntaxError: leading zeros in decimal integer literals are not permitted; use an 0o prefix for octal integers"
+replacement = "(SyntaxError) 数字前面不能加0喵～（如果主人想输入八进制数字，只需要以\"0o\"开头就可以了喵～）"
+
+[[replacements]]
+pattern = "^SyntaxError: Missing parentheses in call to 'print'. Did you mean print\\(\\.\\.\\.\\)\\?"
+replacement = "(SyntaxError) 主人应该写成print(...)喵～"
+
+[[replacements]]
+pattern = "^SyntaxError: '(?P<name>.+)' outside function"
+replacement = "(SyntaxError) \"${name}\" 不能出现在函数之外喵～"
+
+[[replacements]]
+pattern = "^SyntaxError: '(?P<name>.+)' outside async function"
+replacement = "(SyntaxError) \"${name}\" 不能出现在async函数之外喵～"
+
+# NameError
+[[replacements]]
+pattern = "^NameError: name '(?P<name>.+)' is not defined\\. Did you mean: '(?P<name2>.+)'\\? Or did you forget to import '(?P<name3>.+)'\\?"
+replacement = "(NameError) 主人尝试访问的 \"${name}\" 不存在喵～（主人想找的是 '${name2}' 喵？还是忘记 import '${name3}' 了喵？～）"
+
+[[replacements]]
+pattern = "^NameError: name '(?P<name>.+)' is not defined\\. Did you mean: '(?P<name2>.+)'\\?"
+replacement = "(NameError) 主人尝试访问的 \"${name}\" 不存在喵～（主人想找的是 '${name2}' 喵？～）"
+
+[[replacements]]
+pattern = "^NameError: name '(?P<name>.+)' is not defined\\. Did you forget to import '(?P<name2>.+)'\\?"
+replacement = "(NameError) 主人尝试访问的 \"${name}\" 不存在喵～（主人忘记 import '${name2}' 了喵？～）"
+
+[[replacements]]
+pattern = "^NameError: name '(?P<name>.+)' is not defined"
+replacement = "(NameError) 主人忘记定义变量 \"${name}\" 了喵～"
+
+# ModuleNotFoundError
+[[replacements]]
+pattern = "^ModuleNotFoundError: No module named '(?P<name>.+)'; '.+' is not a package"
+replacement = "(ModuleNotFoundError) 主人尝试访问的 \"${name}\" 不存在喵～"
+
+[[replacements]]
+pattern = "^ModuleNotFoundError: No module named '(?P<name>.+)'"
+replacement = "(ModuleNotFoundError) 主人尝试访问的 \"${name}\" 不存在喵～"
+
+# AttributeError
+[[replacements]]
+pattern = "^AttributeError: '(?P<name1>.+)' object has no attribute '(?P<name2>.+)\\. Did you mean: '(?P<name3>.+)'\\?"
+replacement = "(AttributeError) 对象 \"${name1}\" 没有名为 \"${name2}\" 的属性喵～（或许主人要找的是 '${name3}' 喵？～）"
+
+[[replacements]]
+pattern = "^AttributeError: property '(?P<name1>.+)' of '(?P<name2>.+)' object has no setter"
+replacement = "(AttributeError) 对象 \"${name2}\" 的属性 \"${name1}\" 没有setter方法喵～"
+
+[[replacements]]
+pattern = "^AttributeError: module '(?P<name1>.+)' has no attribute '(?P<name2>.+)\\. Did you mean: '(?P<name3>.+)'\\?"
+replacement = "(AttributeError) 主人尝试访问模块 \"${name1}\" 中的 \"${name2}\" 不存在喵～（或许主人要找的是 '${name3}' 喵？～）"
+
+[[replacements]]
+pattern = "^AttributeError: '(?P<name1>.+)' object has no attribute '(?P<name2>.+)\\. Did you mean: '(?P<name3>.+)'\\?"
+replacement = "(AttributeError) 主人尝试访问对象 \"${name1}\" 中的 \"${name2}\" 不存在喵～（或许主人要找的是 '${name3}' 喵？～）"
+
+[[replacements]]
+pattern = "^AttributeError: '(?P<name1>.+)' object has no attribute '(?P<name2>.+)'"
+replacement = "(AttributeError) 对象 \"${name1}\" 没有名为 \"${name2}\" 的属性喵～"
+
+[[replacements]]
+pattern = "^AttributeError: module '(?P<name1>.+)' has no attribute '(?P<name2>.+)'"
+replacement = "(AttributeError) 模块 \"${name1}\" 没有名为 \"${name2}\" 的属性喵～"
+
+# TypeError
+[[replacements]]
+pattern = "^TypeError: unhashable type: '(?P<name>.+)'"
+replacement = "(TypeError) 主人竟然尝试计算 \"${name}\" 类型的哈希值喵～(unhashable type)"
+
+[[replacements]]
+pattern = "^TypeError: can only concatenate str \\(not \"(?P<name>.+)\"\\) to str"
+replacement = "(TypeError) \"${name}\" 不能与字符串拼接喵～"
+
+[[replacements]]
+pattern = "^TypeError: Strings must be encoded before hashing"
+replacement = "(TypeError) 字符串在哈希之前要先进行编码喵～"
+
+[[replacements]]
+pattern = "^TypeError: memoryview: a bytes-like object is required, not '(?P<name>.+)'"
+replacement = "(TypeError) memoryview 需要一个类字节对象而不是 \"${name}\" 喵～"
+
+[[replacements]]
+pattern = "^TypeError: a bytes-like object is required, not '(?P<name>.+)'"
+replacement = "(TypeError) 需要一个类字节对象而不是 \"${name}\" 喵～"
+
+[[replacements]]
+pattern = "^TypeError: can't concat str to byte"
+replacement = "(TypeError) 不能把字符串和字节拼接在一起喵～"
+
+# ZeroDivisionError
+[[replacements]]
+pattern = "^ZeroDivisionError: division by zero"
+replacement = "(ZeroDivisionError) 主人竟然尝试把数字除以0喵～"
+
+# RecursionError
+[[replacements]]
+pattern = "^RecursionError: maximum recursion depth exceeded"
+replacement = "(RecursionError) 超...超过最大递归深度了喵QAQ"
+
+# IndexError
+[[replacements]]
+pattern = "^IndexError: (?P<msg>(?P<name>\\w+) index out of range)"
+replacement = "(IndexError) 序列的索引不存在喵～(${msg})"
+
+# KeyError
+[[replacements]]
+pattern = "^KeyError: '?([^\\r\\n]*)'?"
+replacement = "(KeyError) 主人尝试访问的键不存在喵～"
+
+# IndentationError
+[[replacements]]
+pattern = "^IndentationError: unexpected indent"
+replacement = "(IndentationError) 主人代码中的缩进太多了喵～"
+
+[[replacements]]
+pattern = "^IndentationError: expected an indented block after '(?P<name>.+)' statement on line (?P<num>\\d+)"
+replacement = "(IndentationError) 第 ${num} 行的 '${name}' 语句后面忘记加缩进了喵～"
+
+[[replacements]]
+pattern = "^IndentationError: expected an indented block after function definition on line (?P<num>\\d+)"
+replacement = "(IndentationError) 第 ${num} 行的函数定义后面忘记加缩进了喵～"
+
+[[replacements]]
+pattern = "^IndentationError: expected an indented block"
+replacement = "(IndentationError) 语句后面忘记加缩进了喵～"
+
+[[replacements]]
+pattern = "^IndentationError: unindent does not match any outer indentation level"
+replacement = "(IndentationError) 主人代码中的缩进层级不匹配喵～"
+
+# TabError
+[[replacements]]
+pattern = "^TabError: inconsistent use of tabs and spaces in indentation"
+replacement = "(TabError) 主人把缩进和空格混在一起用了喵～"
+
+# ImportError
+[[replacements]]
+pattern = "^ImportError: cannot import name '(?P<name1>.+)' from '(?P<name2>.+)'"
+replacement = "(ImportError) 主人尝试从 \"${name2}\" 导入的模块 \"${name1}\" 不存在喵～"
+
+# ValueError
+[[replacements]]
+pattern = "^ValueError: invalid literal for int\\(\\) with base (?P<base>\\d+): '(?P<name>.+)'"
+replacement = "(ValueError) 主人输入的数字 \"${name}\" 不是${base}进制的整数喵～"
+
+# UnicodeDecodeError
+[[replacements]]
+pattern = "^UnicodeDecodeError: '(?P<name>.+)' codec can't decode byte 0x(?P<hex>[0-9A-Fa-f]+) in position (?P<pos>\\d+): (?P<reason>.+)"
+replacement = "(UnicodeDecodeError) 主人输入的Unicode字符串中，在 \"${pos}\" 位置的字符 \"0x${hex}\" 不能被 \"${name}\" 解码喵～(${reason})"
+
+[[replacements]]
+pattern = "^UnicodeEncodeError: '(?P<name>.+)' codec can't encode character '(?P<cha_name>.+)' in position (?P<pos>\\d+): (?P<reason>.+)"
+replacement = "(UnicodeEncodeError) 主人输入的Unicode字符串中，在 \"${pos}\" 位置的字符 \"${cha_name}\" 不能被 \"${name}\" 编码喵～(${reason})"
+
+[[replacements]]
+pattern = "^UnicodeEncodeError: '(?P<name>.+)' codec can't encode characters in position (?P<pos>\\d+)(?:-(?P<pos2>\\d+))?: (?P<reason>.+)"
+replacement = "(UnicodeEncodeError) 主人输入的Unicode字符串中，在 \"${pos}-${pos2}\" 位置的字符不能被 \"${name}\" 编码喵～(${reason})"
+
+[[replacements]]
+pattern = "^ValueError: operation forbidden on released memoryview object"
+replacement = "(ValueError) 主人不能操作已释放的内存视图对象喵～"

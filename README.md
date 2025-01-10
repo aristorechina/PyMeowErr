@@ -42,4 +42,4 @@ replacement = "(ErrType) 报错内容是${name}喵～" # 修改后的内容
 
 #### 鸣谢
 
-- 本项目灵感来源于[杂鱼♡～杂鱼♡～程序员都是杂鱼♡～](https://www.bilibili.com/video/BV1JL6fYuEZE/)，[【中文】杂~鱼♡！人家GCC也想变得可爱嘛～](https://www.bilibili.com/video/BV1gC4y1P7t3/?vd_source=317e99b713244b1a268da27f65a49bbb)
+- 本项目灵感来源于[杂鱼♡～杂鱼♡～程序员都是杂鱼♡～](https://www.bilibili.com/video/BV1JL6fYuEZE/)，[【中文】杂~鱼♡！人家GCC也想变得可爱嘛～](https://www.bilibili.com/video/BV1gC4y1P7t3/)
